@@ -388,3 +388,157 @@
       font-size: .8rem;
       color: #8D99AB;
     }
+
+    
+/* ============ PÁGINAS DE MÓDULOS ============ */
+
+.pagina-modulo {
+  flex: 1;
+}
+
+.modulo-header {
+  background: var(--blanco);
+  border-bottom: 1px solid var(--borde);
+  padding: 18px 0;
+}
+
+.modulo-volver {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.modulo-hero {
+  background: linear-gradient(160deg, #EAF8F0 0%, #FFFFFF 75%);
+  border-bottom: 1px solid var(--borde);
+  padding: 48px 20px;
+}
+
+.modulo-hero__contenido {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.modulo-etiqueta {
+  display: inline-block;
+  background: var(--verde-claro);
+  color: var(--verde-oscuro);
+  padding: 6px 14px;
+  border-radius: 40px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+
+.modulo-hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+.modulo-hero p {
+  color: var(--gris);
+  max-width: 700px;
+}
+
+.modulo-contenido {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 36px 20px 56px;
+}
+
+.modulo-bloque {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 26px;
+  margin-bottom: 22px;
+  box-shadow: 0 2px 6px rgba(55, 64, 80, 0.05);
+}
+
+.modulo-bloque h2 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+.modulo-bloque h3 {
+  font-size: 1.05rem;
+  margin: 20px 0 8px;
+}
+
+.modulo-bloque p {
+  color: var(--gris);
+  margin-bottom: 12px;
+}
+
+.modulo-bloque ul,
+.modulo-bloque ol {
+  padding-left: 24px;
+  margin: 12px 0;
+}
+
+.modulo-bloque li {
+  margin-bottom: 8px;
+}
+
+.modulo-recurso {
+  background: var(--verde-claro);
+  border-radius: var(--radio);
+  padding: 18px;
+  margin-top: 16px;
+}
+
+.modulo-recurso p {
+  margin-bottom: 12px;
+}
+
+.modulo-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: var(--radio);
+  background: #EEF1F5;
+  margin-top: 12px;
+}
+
+.modulo-navegacion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+@media (max-width: 640px) {
+  .modulo-hero {
+    padding: 34px 20px;
+  }
+
+  .modulo-contenido {
+    padding: 24px 16px 40px;
+  }
+
+  .modulo-bloque {
+    padding: 20px;
+  }
+}
+
+
+.video-contenedor {
+  width: 100%;
+  max-width: 900px;
+  margin: 24px auto;
+}
+
+.video-contenedor video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
