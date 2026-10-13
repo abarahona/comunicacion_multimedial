@@ -1,404 +1,13 @@
 <!doctype html>
 <html lang="es-ar">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Capacitación Ciudadano Digital</title>
   <meta name="description" content="Esqueleto MVP de capacitación para usuarios de Ciudadano Digital (CiDi), Gobierno de la Provincia de Córdoba.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2336CA70'/%3E%3Ccircle cx='16' cy='12' r='5' fill='%23fff'/%3E%3Cpath d='M6 26c0-5 4.5-8 10-8s10 3 10 8' fill='%23fff'/%3E%3C/svg%3E">
-  <style>
-    /* ============ VARIABLES DE MARCA CIDI ============ */
-    :root {
-      --verde: #36CA70;
-      --verde-oscuro: #23A05A;
-      --verde-claro: #D7F5E3;
-      --tinta: #374050;          /* gris azulado principal */
-      --gris: #606B7E;
-      --gris-claro: #BFC5D1;
-      --amarillo: #F6BD2B;
-      --fondo: #FAFAFA;
-      --blanco: #FFFFFF;
-      --borde: #E8EBF1;
-      --sombra: 0 6px 18px rgba(55, 64, 80, .10);
-      --radio: 10px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: "Be Vietnam Pro", "Segoe UI", Roboto, Arial, sans-serif;
-      color: var(--tinta);
-      background: var(--fondo);
-      line-height: 1.5;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    a { color: var(--verde-oscuro); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .contenedor {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* ============ HEADER ============ */
-    .header {
-      background: var(--blanco);
-      border-bottom: 1px solid var(--borde);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-    }
-
-    .header__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 12px 0;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo__marca { display: flex; flex-direction: column; line-height: 1.15; }
-    .logo__nombre { font-size: 1.25rem; font-weight: 700; letter-spacing: .2px; }
-    .logo__sub { font-size: .72rem; color: var(--gris); text-transform: uppercase; letter-spacing: 1.5px; }
-
-    .header__acciones {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .icono-buscar { background: none; border: 0; cursor: pointer; color: var(--tinta); padding: 6px; }
-    .icono-buscar:hover { color: var(--verde-oscuro); }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 22px;
-      border-radius: 40px;
-      border: 0;
-      font: inherit;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background .15s ease, transform .1s ease;
-    }
-    .btn:active { transform: scale(.98); }
-
-    .btn-primario {
-      background: var(--verde);
-      color: #fff;
-    }
-    .btn-primario:hover {
-      background: var(--verde-oscuro);
-      text-decoration: none;
-    }
-
-    .btn-secundario {
-      background: #fff;
-      color: var(--verde-oscuro);
-      border: 2px solid var(--verde);
-    }
-    .btn-secundario:hover { background: var(--verde-claro); text-decoration: none; }
-
-    .btn-amarillo {
-      background: var(--amarillo);
-      color: var(--tinta);
-    }
-    .btn-amarillo:hover { background: #E5A91C; text-decoration: none; }
-
-    /* ============ NAV ============ */
-    .nav {
-      background: var(--tinta);
-    }
-    .nav__menu {
-      display: flex;
-      list-style: none;
-      overflow-x: auto;
-      gap: 4px;
-      padding: 0;
-    }
-    .nav__menu a {
-      display: block;
-      color: #fff;
-      font-size: .92rem;
-      padding: 12px 16px;
-      white-space: nowrap;
-      border-bottom: 3px solid transparent;
-    }
-    .nav__menu a:hover { background: rgba(255,255,255,.08); text-decoration: none; border-color: var(--verde); }
-    .nav__menu .activo { border-color: var(--verde); font-weight: 600; }
-
-    /* ============ HERO BUSQUEDA ============ */
-    .hero {
-      background: linear-gradient(160deg, #EAF8F0 0%, #FFFFFF 60%);
-      border-bottom: 1px solid var(--borde);
-    }
-    .hero__inner { padding: 56px 20px 48px; text-align: center; }
-    .hero__etiqueta {
-      display: inline-block;
-      background: var(--verde-claro);
-      color: var(--verde-oscuro);
-      font-size: .8rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: 40px;
-      margin-bottom: 16px;
-    }
-    .hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--tinta); margin-bottom: 8px; }
-    .hero p { color: var(--gris); max-width: 640px; margin: 0 auto 24px; }
-
-    .buscador {
-      max-width: 620px;
-      margin: 0 auto;
-      display: flex;
-      background: var(--blanco);
-      border: 2px solid var(--verde);
-      border-radius: 40px;
-      overflow: hidden;
-      box-shadow: var(--sombra);
-    }
-    .buscador input {
-      flex: 1;
-      border: 0;
-      padding: 14px 20px;
-      font: inherit;
-      outline: none;
-    }
-    .buscador .btn {
-      border-radius: 40px;
-      margin: 4px;
-    }
-
-    .mas-buscado { margin-top: 20px; color: var(--gris); font-size: .9rem; }
-    .mas-buscado a {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin: 4px;
-      padding: 5px 12px;
-      background: var(--blanco);
-      border: 1px solid var(--gris-claro);
-      border-radius: 30px;
-      color: var(--tinta);
-      font-size: .82rem;
-    }
-    .mas-buscado a:hover { border-color: var(--verde); color: var(--verde-oscuro); background: var(--verde-claro); text-decoration: none; }
-
-    /* ============ BANNER ============ */
-    .banner {
-      background: linear-gradient(120deg, var(--tinta) 0%, #4A5A74 100%);
-      color: #fff;
-    }
-    .banner__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      padding: 28px 20px;
-    }
-    .banner h2 { font-size: 1.3rem; margin-bottom: 4px; }
-    .banner p { color: #C9D2E0; }
-
-    /* ============ SECCIONES ============ */
-    .seccion { padding: 44px 0; }
-    .seccion--blanca { background: var(--blanco); border-top: 1px solid var(--borde); border-bottom: 1px solid var(--borde); }
-    .seccion__titulo { font-size: 1.5rem; color: var(--tinta); margin-bottom: 6px; }
-    .seccion__sub { color: var(--gris); margin-bottom: 28px; max-width: 720px; }
-
-    .rejilla { display: grid; gap: 20px; }
-    .rejilla--3 { grid-template-columns: repeat(3, 1fr); }
-    .rejilla--2 { grid-template-columns: repeat(2, 1fr); }
-
-    @media (max-width: 900px) {
-      .rejilla--3 { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 640px) {
-      .rejilla--3, .rejilla--2 { grid-template-columns: 1fr; }
-    }
-
-    /* ============ TARJETAS ============ */
-    .tarjeta {
-      background: var(--blanco);
-      border: 1px solid var(--borde);
-      border-radius: var(--radio);
-      padding: 24px;
-      box-shadow: 0 2px 6px rgba(55,64,80,.05);
-      transition: transform .15s ease, box-shadow .15s ease;
-    }
-    .tarjeta:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--sombra);
-      border-color: var(--verde);
-    }
-
-    .tarjeta__icono {
-      width: 52px;
-      height: 52px;
-      border-radius: 12px;
-      background: var(--verde-claro);
-      color: var(--verde-oscuro);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .tarjeta h3 { font-size: 1.05rem; margin-bottom: 8px; }
-    .tarjeta p { color: var(--gris); font-size: .92rem; }
-    .tarjeta a.enlace {
-      display: inline-block;
-      margin-top: 14px;
-      font-weight: 600;
-      font-size: .9rem;
-    }
-
-    .tarjeta--tramite { border-top: 4px solid var(--amarillo); }
-    .tarjeta--tramite:nth-child(3n+2) { border-top-color: var(--verde); }
-    .tarjeta--tramite:nth-child(3n) { border-top-color: var(--amarillo); }
-
-    .tarjeta--resumen { display: flex; align-items: flex-start; gap: 14px; padding: 20px; }
-    .tarjeta--resumen .punto {
-      flex: 0 0 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: var(--verde);
-      color: #fff;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* ============ PASOS ============ */
-    .pasos { counter-reset: paso; display: grid; gap: 16px; }
-    .paso {
-      background: var(--blanco);
-      border: 1px solid var(--borde);
-      border-radius: var(--radio);
-      padding: 20px 22px 20px 70px;
-      position: relative;
-    }
-    .paso::before {
-      counter-increment: paso;
-      content: counter(paso);
-      position: absolute;
-      left: 20px;
-      top: 20px;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: var(--verde-claro);
-      color: var(--verde-oscuro);
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .paso h3 { font-size: 1rem; margin-bottom: 4px; }
-    .paso p { color: var(--gris); font-size: .9rem; }
-
-    /* ============ COLUMNAS AYUDAS ============ */
-    .ayuda {
-      background: var(--blanco);
-      border: 1px solid var(--borde);
-      border-left: 5px solid var(--verde);
-      border-radius: var(--radio);
-      padding: 24px;
-    }
-    .ayuda h3 { font-size: 1.05rem; margin-bottom: 6px; }
-    .ayuda p { color: var(--gris); font-size: .92rem; margin-bottom: 12px; }
-
-    /* ============ CHAT AYUDA FLOTANTE ============ */
-    .ayuda-flotante {
-      position: fixed;
-      right: 22px;
-      bottom: 22px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--tinta);
-      color: #fff;
-      border: 0;
-      border-radius: 40px;
-      padding: 12px 20px;
-      font: inherit;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: var(--sombra);
-      z-index: 60;
-    }
-    .ayuda-flotante:hover { background: #2a323f; }
-
-    .ayuda-flotante__panel {
-      position: fixed;
-      right: 22px;
-      bottom: 82px;
-      width: 320px;
-      background: var(--blanco);
-      border: 1px solid var(--borde);
-      border-radius: 14px;
-      box-shadow: var(--sombra);
-      overflow: hidden;
-      display: none;
-      z-index: 61;
-    }
-    .ayuda-flotante__panel.abierto { display: block; }
-    .ayuda-flotante__header {
-      background: var(--verde);
-      color: #fff;
-      padding: 14px 16px;
-      font-weight: 600;
-    }
-    .ayuda-flotante__cuerpo { padding: 12px 16px; max-height: 260px; overflow-y: auto; }
-    .mensaje {
-      background: var(--fondo);
-      border: 1px solid var(--borde);
-      border-radius: 12px;
-      padding: 10px 12px;
-      margin-bottom: 8px;
-      font-size: .88rem;
-      color: var(--tinta);
-    }
-    .mensaje--usuario { background: var(--verde-claro); border-color: transparent; text-align: right; }
-
-    /* ============ FOOTER ============ */
-    .footer { background: var(--tinta); color: #C9D2E0; margin-top: auto; }
-    .footer__inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-      padding: 32px 20px;
-    }
-    .footer h4 { color: #fff; font-size: .95rem; margin-bottom: 10px; }
-    .footer ul { list-style: none; }
-    .footer a { color: #C9D2E0; font-size: .9rem; display: block; padding: 3px 0; }
-    .footer a:hover { color: var(--verde); }
-    .footer__bottom {
-      border-top: 1px solid rgba(255,255,255,.12);
-      padding: 16px 20px;
-      text-align: center;
-      font-size: .8rem;
-      color: #8D99AB;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -423,7 +32,7 @@
             <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
           </svg>
         </button>
-        <a class="btn btn-primario" href="#" id="btnIngresar">INGRESAR</a>
+        <a class="btn btn-primario" href="#modulos" id="btnIngresar">Comenzá la capacitación</a>
       </div>
     </div>
   </header>
@@ -434,8 +43,6 @@
       <ul class="nav__menu">
         <li><a href="#inicio" class="activo">Inicio</a></li>
         <li><a href="#que-es">¿Qué es?</a></li>
-        <li><a href="#como-ser">¿Cómo ser Ciudadano Digital?</a></li>
-        <li><a href="#modulos">Capacitación</a></li>
         <li><a href="#material">Material de apoyo</a></li>
         <li><a href="#ayuda">Ayuda</a></li>
       </ul>
@@ -443,138 +50,6 @@
   </nav>
 
   <main id="inicio">
-
-    <!-- ================= HERO / BUSQUEDA ================= -->
-    <!-- <section class="hero">
-      <div class="contenedor hero__inner">
-        <span class="hero__etiqueta">Capacitación Ciudadano Digital</span>
-        <h1>
-          Capacitación donde aprenderás de forma simple, rápida y segura a usar los trámites y servicios
-          digitales del Gobierno de la Provincia de Córdoba.</h1>
-        <!-- <p>
-        </p> -->
-        <!--
-        <form class="buscador" id="formBuscar" role="search">
-          <input type="search" id="inputBuscar" placeholder="Ej.: Boleto Educativo Cordobés, nivel 2, expediente…" aria-label="Buscar trámite, servicio o palabra clave">
-          <button class="btn btn-primario" type="submit">Buscar</button>
-        </form>
-
-        <div class="mas-buscado" aria-label="Lo más buscado">
-          Lo más buscado:
-          <a href="#modulos" data-tag="boleto educativo">Boleto Educativo Cordobés (Bec)</a>
-          <a href="#material" data-tag="certificado">Certificado de no inscripción (Ley 9680)</a>
-          <a href="#material" data-tag="empleado digital">Empleado Digital</a>
-          <a href="#material" data-tag="postulantes">Formulario Único de Postulantes</a>
-        </div> -->
-      </div>
-    </section>
-
-    <!-- ================= BANNER CAPACITACIÓN ================= -->
-    <!-- <section class="banner">
-      <div class="contenedor banner__inner">
-        <div>
-          <h2>Podés realizar trámites digitalmente, sin moverte de tu casa.</h2>
-          <p>Seguí la capacitación guiada por módulos y resolvé tus dudas en cada paso.</p>
-        </div>
-        <a class="btn btn-amarillo" href="#modulos">COMENZÁ LA CAPACITACIÓN</a>
-      </div>
-    </section> -->
-
-    <!-- ================= ¿QUÉ ES? ================= -->
-    <!-- <section class="seccion" id="que-es">
-      <div class="contenedor">
-        <h2 class="seccion__titulo">¿Qué es Ciudadano Digital?</h2>
-        <p class="seccion__sub">
-          Es una plataforma tecnológica que te permite acceder, desde un único lugar y con una misma cuenta,
-          a todos los trámites y servicios digitales del Gobierno de la Provincia de Córdoba.
-        </p>
-
-        <div class="rejilla rejilla--3">
-          <article class="tarjeta">
-            <div class="tarjeta__icono">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7z"/></svg>
-            </div>
-            <h3>Servicios Online</h3>
-            <p>Accedé rápidamente a tus servicios más utilizados sin tener que cargar datos una y otra vez.</p>
-            <a class="enlace" href="#modulos">Consultá cómo usarlos →</a>
-          </article>
-
-          <article class="tarjeta">
-            <div class="tarjeta__icono">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v12H4z"/><path d="m2 7 10 6L22 7"/></svg>
-            </div>
-            <h3>Centro de comunicaciones y notificaciones</h3>
-            <p>Recibí e-mails y mensajes de texto informativos y de alerta entre el Gobierno y vos, en un solo lugar.</p>
-            <a class="enlace" href="#modulos">Aprendé a consultarlas →</a>
-          </article>
-
-          <article class="tarjeta">
-            <div class="tarjeta__icono">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M5 20c0-4 3-6 7-6s7 2 7 6"/></svg>
-            </div>
-            <h3>Mis datos</h3>
-            <p>Una única cuenta de usuario y contraseña con acceso confidencial a tu información personal.</p>
-            <a class="enlace" href="#como-ser">Mantené tus datos al día →</a>
-          </article>
-
-          <article class="tarjeta">
-            <div class="tarjeta__icono">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m9 12 2 2 4-4"/></svg>
-            </div>
-            <h3>Centro de Constatación de Identidad</h3>
-            <p>Digitalizá y asociá tu documentación a tu cuenta para acreditar tu identidad y obtener más beneficios.</p>
-            <a class="enlace" href="#nivel2">Obtené el Nivel 2 →</a>
-          </article>
-
-          <article class="tarjeta">
-            <div class="tarjeta__icono">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h3a2 2 0 0 1 2 2v3"/><circle cx="9" cy="9" r="2"/><circle cx="16" cy="16" r="2"/><path d="m11 11 2 2"/></svg>
-            </div>
-            <h3>Administrador de relaciones</h3>
-            <p>Autorizá a otras personas a operar en tu representación en servicios puntuales.</p>
-            <a class="enlace" href="#modulos">Gestioná tus autorizados →</a>
-          </article>
-
-          <article class="tarjeta">
-            <div class="tarjeta__icono">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/></svg>
-            </div>
-            <h3>Centro de documentación</h3>
-            <p>Un repositorio único de documentos digitales, disponible desde múltiples plataformas.</p>
-            <a class="enlace" href="#material">Descargá tus documentos →</a>
-          </article>
-        </div>
-      </div>
-    </section> -->
-
-    <!-- ================= ¿CÓMO SER CIUDADANO DIGITAL? ================= -->
-    <!-- <section class="seccion seccion--blanca" id="como-ser">
-      <div class="contenedor">
-        <h2 class="seccion__titulo">¿Cómo ser Ciudadano Digital?</h2>
-        <p class="seccion__sub">
-          En simples pasos, acompañate con esta guía para crear tu cuenta y empezar a usar los servicios.
-        </p>
-
-        <div class="pasos">
-          <div class="paso">
-            <h3>Creá tu cuenta</h3>
-            <p>Ingresá tus datos personales y elegí una contraseña segura en el portal Ciudadano Digital.</p>
-          </div>
-          <div class="paso">
-            <h3>Confirmá tu correo o teléfono</h3>
-            <p>Completá la validación con el código que recibís para activar tu cuenta.</p>
-          </div>
-          <div class="paso">
-            <h3>Obtené el Nivel 2 (opcional)</h3>
-            <p>Constatá tu identidad de manera presencial o digital para acceder a más beneficios.</p>
-          </div>
-          <div class="paso">
-            <h3>Empezá a tramitar</h3>
-            <p>Ingresá con tu cuenta a los servicios y consultá tus trámites, notificaciones y documentos.</p>
-          </div>
-        </div>
-      </div>
-    </section> -->
 
     <!-- ================= MÓDULOS DE CAPACITACIÓN ================= -->
     <section class="seccion" id="modulos">
@@ -590,99 +65,50 @@
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
             </div>
             <h3>Módulo 1 · Introducción a CiDi</h3>
-            <p>Qué es la identidad digital, la plataforma, niveles de cuenta y cómo se relaciona el ciudadano con el Gobierno.</p>
-            <a class="enlace" href="#material">Ver material →</a>
+            <p>Conocé la plataforma, niveles de cuenta y cómo registrarte como usuario.</p>
+            <a class="enlace" href="modulos/modulo1-Intro.html">Ingresar a módulo→</a>
+          </article>
+
+          <article class="tarjeta tarjeta--tramite">
+            <div class="tarjeta__icono">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+            </div>
+            <h3>Módulo 2 · Nivel 2 en CiDi </h3>
+            <p>Conocé qué es ser nivel 2 y sus beneficios </p>
+            <a class="enlace" href="modulos/modulo2-Nivel2.html">Ingresar a módulo→</a>
           </article>
 
           <article class="tarjeta tarjeta--tramite">
             <div class="tarjeta__icono">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 4h4v4"/><path d="M20 4 9 15"/><path d="M9 4h4"/><path d="M15 20h4v-4"/><path d="M20 20 4 4"/></svg>
             </div>
-            <h3>Módulo 2 · Registración y Nivel 2</h3>
-            <p>Creación de cuenta, verificación de identidad y constatación para ampliar los beneficios disponibles.</p>
-            <a class="enlace" href="#material">Ver material →</a>
+            <h3>Módulo 3 · Gestión de trámites</h3>
+            <p>Aprende a gestionar tus trámites, desde la creación hasta el seguimiento y la consulta.</p>
+            <a class="enlace" href="modulos/modulo3-Tramites.html">Ingresar a módulo→</a>
           </article>
 
           <article class="tarjeta tarjeta--tramite">
             <div class="tarjeta__icono">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
             </div>
-            <h3>Módulo 3 · Buscar y realizar trámites</h3>
-            <p>Navegación, buscador, guía de trámites y cómo iniciar o consultar un trámite online.</p>
-            <a class="enlace" href="#material">Ver material →</a>
+            <h3>Módulo 4 · Gestión de firma CiDi</h3>
+            <p>Comprende como funciona la firma, subida y gestión de documentos digitales.</p>
+            <a class="enlace" href="modulos/modulo4-Firma.html">Ingresar a módulo→</a>
           </article>
 
           <article class="tarjeta tarjeta--tramite">
             <div class="tarjeta__icono">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v12H4z"/><path d="m2 7 10 6L22 7"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
             </div>
-            <h3>Módulo 4 · Notificaciones y comunicaciones</h3>
-            <p>Centro de comunicaciones, consulta de notificaciones y configuración del correo electrónico.</p>
-            <a class="enlace" href="#material">Ver material →</a>
+            <h3>Módulo 5 · Finaliza tu capacitación</h3>
+            <p>Completa tu capacitación y accede a los certificados de finalización.</p>
+            <a class="enlace" href="modulos/modulo5-Final.html">Ingresar a módulo→</a>
           </article>
 
-          <article class="tarjeta tarjeta--tramite">
-            <div class="tarjeta__icono">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/></svg>
-            </div>
-            <h3>Módulo 5 · Documentación y firma digital</h3>
-            <p>Centro de documentación, repositorio único, firma electrónica y digital de documentos.</p>
-            <a class="enlace" href="#material">Ver material →</a>
-          </article>
-
-          <article class="tarjeta tarjeta--tramite">
-            <div class="tarjeta__icono">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
-            </div>
-            <h3>Módulo 6 · Seguridad y buenas prácticas</h3>
-            <p>Contraseñas seguras, datos personales, phishing y cómo proteger tu cuenta de ciudadano.</p>
-            <a class="enlace" href="#material">Ver material →</a>
-          </article>
         </div>
       </div>
     </section>
 
-    <!-- ================= TRÁMITES DESTACADOS ================= -->
-    <!-- <section class="seccion seccion--blanca">
-      <div class="contenedor">
-        <h2 class="seccion__titulo">Iniciá o consultá información de los trámites de</h2>
-        <p class="seccion__sub">Agrupamos los trámites por repartición para que encuentres lo que necesitás más rápido.</p>
-
-        <div class="rejilla rejilla--3">
-          <article class="tarjeta tarjeta--tramite">
-            <h3>Desarrollo Social</h3>
-            <p>Boleto Educativo Cordobés, becas y programas de asistencia social.</p>
-            <a class="enlace" href="#">Ver trámites →</a>
-          </article>
-          <article class="tarjeta tarjeta--tramite">
-            <h3>Centro Cívico</h3>
-            <p>Trámites generales de la administración pública provincial.</p>
-            <a class="enlace" href="#">Ver trámites →</a>
-          </article>
-          <article class="tarjeta tarjeta--tramite">
-            <h3>Economía y Gestión Pública</h3>
-            <p>Impuestos, registros y servicios del área económica provincial.</p>
-            <a class="enlace" href="#">Ver trámites →</a>
-          </article>
-        </div>
-      </div>
-    </section> -->
-
-    <!-- ================= AYUDA RÁPIDA (2 COLUMNAS) ================= -->
-    <!-- <section class="seccion">
-      <div class="contenedor rejilla rejilla--2">
-        <div class="ayuda">
-          <h3>¿Iniciaste un trámite?</h3>
-          <p>Consultá el estado de tu expediente y su seguimiento sin moverte de tu casa.</p>
-          <a class="btn btn-secundario" href="#">Consulta de expediente</a>
-        </div>
-        <div class="ayuda">
-          <h3>¿Sugerencias, dudas o reclamos?</h3>
-          <p>Dejanos tu consulta a través de los canales oficiales de atención al ciudadano.</p>
-          <a class="btn btn-secundario" href="#">Ingresá a Consulta Ciudadana</a>
-        </div>
-      </div>
-    </section> -->
 
     <!-- ================= MATERIAL DE APOYO ================= -->
     <section class="seccion seccion--blanca" id="material">
@@ -719,41 +145,6 @@
       </div>
     </section>
 
-    <!-- ================= ATENCIÓN AL CIUDADANO ================= -->
-    <!-- <section class="seccion">
-      <div class="contenedor">
-        <h2 class="seccion__titulo">Atención al Ciudadano</h2>
-        <p class="seccion__sub">Conocé los canales disponibles para acompañarte durante y después de la capacitación.</p>
-
-        <div class="rejilla rejilla--3">
-          <article class="tarjeta tarjeta--resumen">
-            <span class="punto">1</span>
-            <div>
-              <h3>Centros de Contacto</h3>
-              <p>Centros de Atención al Ciudadano y Mesas de Entradas SUAC.</p>
-              <a class="enlace" href="#">Conocé cómo llegar →</a>
-            </div>
-          </article>
-          <article class="tarjeta tarjeta--resumen">
-            <span class="punto">2</span>
-            <div>
-              <h3>Teléfonos</h3>
-              <p>El número adecuado según el trámite o la consulta que necesites.</p>
-              <a class="enlace" href="#">Ver teléfonos →</a>
-            </div>
-          </article>
-          <article class="tarjeta tarjeta--resumen">
-            <span class="punto">3</span>
-            <div>
-              <h3>Chat</h3>
-              <p>Atención virtual para resolver tus dudas de forma inmediata.</p>
-              <a class="enlace" href="#chat" id="btnAbrirChat">Iniciar chat →</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section> -->
-
     <!-- ================= IDENTIDAD DIGITAL ================= -->
     <section class="seccion seccion--blanca" id="ayuda">
       <div class="contenedor">
@@ -764,17 +155,12 @@
           <article class="tarjeta">
             <h3>Creá tu cuenta</h3>
             <p>Si todavía no tenés CiDi, conocé en simples pasos cómo crear tu cuenta.</p>
-            <a class="btn btn-primario" href="#como-ser">Crear cuenta</a>
-          </article>
-          <article class="tarjeta">
-            <h3>Recuperá tu acceso</h3>
-            <p>¿No recordás tu contraseña o los datos para ingresar? Entrá acá.</p>
-            <a class="btn btn-primario" href="#">Recuperar acceso</a>
+            <a class="btn btn-primario" href="/modulos/modulo1-Intro.html">Crear cuenta</a>
           </article>
           <article class="tarjeta" id="nivel2">
             <h3>Obtené el Nivel 2</h3>
             <p>Constatá tu identidad para obtener más beneficios. Conocé cómo hacerlo.</p>
-            <a class="btn btn-primario" href="#como-ser">Ir al Nivel 2</a>
+            <a class="btn btn-primario" href="modulos/modulo2-Nivel2.html">Ir al Nivel 2</a>
           </article>
         </div>
       </div>
@@ -832,82 +218,6 @@
     </div>
   </footer>
 
-  <script>
-    (function () {
-      var $ = function (s) { return document.querySelector(s); };
-
-      // Buscador del hero: filtra los "lo más buscado" y avisa al usuario.
-      var form = $('#formBuscar');
-      var input = $('#inputBuscar');
-      var etiquetas = document.querySelectorAll('.mas-buscado a[data-tag]');
-
-      form.addEventListener('submit', function (ev) {
-        ev.preventDefault();
-        var valor = (input.value || '').trim().toLowerCase();
-        if (!valor) return;
-        var p = $('.mas-buscado');
-        var prev = p.querySelector('.sin-resultado');
-        if (prev) prev.remove();
-        var coincide = Array.from(etiquetas).find(function (a) {
-          return a.textContent.toLowerCase().indexOf(valor) > -1;
-        });
-        if (coincide) coincide.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        else {
-          var s = document.createElement('span');
-          s.className = 'sin-resultado';
-          s.style.color = '#606B7E';
-          s.style.marginLeft = '8px';
-          s.textContent = 'MVP: el contenido de trámites se completará en próximas iteraciones.';
-          p.appendChild(s);
-        }
-      });
-
-      // Botón lupa: vuelve al buscador y le da foco.
-      $('#btnLupa').addEventListener('click', function () {
-        document.getElementById('inicio').scrollIntoView({ behavior: 'smooth' });
-        input.focus();
-      });
-
-      // Resaltado del ítem activo en la navegación.
-      var enlaces = document.querySelectorAll('.nav__menu a');
-      enlaces.forEach(function (a) {
-        a.addEventListener('click', function () {
-          enlaces.forEach(function (x) { x.classList.remove('activo'); });
-          a.classList.add('activo');
-        });
-      });
-
-      // Chat de ayuda flotante.
-      var btnAyuda = $('#btnAyuda');
-      var panel = $('#panelChat');
-
-      function abrirChat() {
-        panel.classList.add('abierto');
-        var m = document.createElement('div');
-        m.className = 'mensaje mensaje--usuario';
-        m.textContent = 'Hola, quiero ayuda para usar Ciudadano Digital.';
-        $('#cuerpoChat').appendChild(m);
-      }
-
-      btnAyuda.addEventListener('click', function () {
-        panel.classList.toggle('abierto');
-      });
-      $('#btnAbrirChat').addEventListener('click', function (ev) {
-        ev.preventDefault();
-        abrirChat();
-      });
-      $('#footerChat').addEventListener('click', function (ev) {
-        ev.preventDefault();
-        abrirChat();
-      });
-
-      // "INGRESAR": placeholder que en la versión real conecta con identificación.
-      $('#btnIngresar').addEventListener('click', function (ev) {
-        ev.preventDefault();
-        alert('MVP: aquí se redirige a la cuenta CiDi del usuario.\n¡Bienvenido a la capacitación!');
-      });
-      $('#footerIngresar').addEventListener('click', function (ev) { ev.preventDefault(); });
-    })();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

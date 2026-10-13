@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluación final · CiDi</title>
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .evaluacion-hero {
+      background: linear-gradient(160deg, #EAF8F0, #FFFFFF);
+      border-bottom: 1px solid var(--borde);
+      padding: 44px 20px;
+      text-align: center;
+    }
+
+    .evaluacion-hero h1 {
+      font-size: clamp(1.7rem, 4vw, 2.3rem);
+      margin-bottom: 12px;
+    }
+
+    .evaluacion-hero p {
+      color: var(--gris);
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .evaluacion-contenido {
+      width: 100%;
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 36px 20px 56px;
+    }
+
+    .pregunta {
+      background: var(--blanco);
+      border: 1px solid var(--borde);
+      border-radius: var(--radio);
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(55, 64, 80, .05);
+    }
+
+    .pregunta legend,
+    .pregunta-titulo {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .opciones {
+      display: grid;
+      gap: 12px;
+    }
+
+    .opcion {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .opcion input {
+      margin-top: 5px;
+      accent-color: var(--verde-oscuro);
+    }
+
+    .respuesta-texto {
+      width: 100%;
+      min-height: 100px;
+      padding: 12px;
+      border: 1px solid var(--gris-claro);
+      border-radius: 8px;
+      font: inherit;
+      resize: vertical;
+    }
+
+    .respuesta-texto:focus {
+      outline: 2px solid var(--verde);
+    }
+
+    .acciones {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .mensaje-final {
+      display: none;
+      background: var(--verde-claro);
+      border-radius: var(--radio);
+      padding: 28px;
+      text-align: center;
+    }
+
+    .mensaje-final h2 {
+      margin-bottom: 10px;
+    }
+
+    .mensaje-final p {
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .pregunta {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="modulo-header">
+    <div class="contenedor">
+      <a class="modulo-volver" href="../index.html">
+        ← Volver al inicio
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- MENSAJE DE CIERRE -->
+    <section class="evaluacion-hero">
+      <h1>¡Felicitaciones por completar la capacitación!</h1>
+      <p>
+        Ahora podés poner a prueba tus conocimientos con la evaluación final.
+        <br>
+        ¡No te preocupes! Podés volver a intentarla si no obtenés el resultado esperado.
+      </p>
+    </section>
+
+    <!-- EVALUACIÓN DEL APRENDIZAJE -->
+    <section class="evaluacion-contenido">
+
+      <h2 class="seccion__titulo">Evaluación final</h2>
+      <p class="seccion__sub">
+        <!-- Escribí acá las instrucciones para responder. -->
+      </p>
+
+      <form id="formEvaluacion">
+
+        <!-- PREGUNTA DE OPCIÓN MÚLTIPLE -->
+        <fieldset class="pregunta">
+          <legend>1. Escribí acá la pregunta.</legend>
+
+          <div class="opciones">
+            <label class="opcion">
+              <input type="radio" name="pregunta1" value="a" required>
+              <span>Opción A</span>
+            </label>
+
+            <label class="opcion">
+              <input type="radio" name="pregunta1" value="b">
+              <span>Opción B</span>
+            </label>
+
+            <label class="opcion">
+              <input type="radio" name="pregunta1" value="c">
+              <span>Opción C</span>
+            </label>
+
+            <label class="opcion">
+              <input type="radio" name="pregunta1" value="d">
+              <span>Opción D</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- PREGUNTA DE VERDADERO O FALSO -->
+        <fieldset class="pregunta">
+          <legend>2. Escribí acá la afirmación.</legend>
+
+          <div class="opciones">
+            <label class="opcion">
+              <input type="radio" name="pregunta2" value="verdadero" required>
+              <span>Verdadero</span>
+            </label>
+
+            <label class="opcion">
+              <input type="radio" name="pregunta2" value="falso">
+              <span>Falso</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- PREGUNTA DE RESPUESTA MÚLTIPLE -->
+        <fieldset class="pregunta">
+          <legend>3. Escribí acá la pregunta. Podés seleccionar varias opciones.</legend>
+
+          <div class="opciones">
+            <label class="opcion">
+              <input type="checkbox" name="pregunta3" value="a">
+              <span>Opción A</span>
+            </label>
+
+            <label class="opcion">
+              <input type="checkbox" name="pregunta3" value="b">
+              <span>Opción B</span>
+            </label>
+
+            <label class="opcion">
+              <input type="checkbox" name="pregunta3" value="c">
+              <span>Opción C</span>
+            </label>
+
+            <label class="opcion">
+              <input type="checkbox" name="pregunta3" value="d">
+              <span>Opción D</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- PREGUNTA ABIERTA -->
+        <div class="pregunta">
+          <label class="pregunta-titulo" for="pregunta4">
+            4. Escribí acá la pregunta abierta.
+          </label>
+
+          <textarea
+            class="respuesta-texto"
+            id="pregunta4"
+            name="pregunta4"
+            placeholder="Escribí tu respuesta..."
+          ></textarea>
+        </div>
+
+        <!-- AGREGÁ MÁS PREGUNTAS DUPLICANDO LOS BLOQUES ANTERIORES -->
+
+        <div class="acciones">
+          <a class="btn btn-secundario" href="../index.html">
+            Volver al inicio
+          </a>
+
+          <button class="btn btn-primario" type="submit" href="#mensajeFinal">
+            Finalizar evaluación →
+          </button>
+        </div>
+
+      </form>
+
+      <!-- MENSAJE QUE APARECE AL FINALIZAR -->
+      <section class="mensaje-final" id="mensajeFinal" aria-live="polite">
+        <h2>¡Gracias por completarFSGEWGWE la evaluación!</h2>
+        <p>
+          <!-- Escribí acá el mensaje de cierre. -->
+        </p>
+
+        <a class="btn btn-primario" href="../index.html">
+          Volver al inicio
+        </a>
+      </section>
+
+    </section>
+
+  </main>
+
+  <script>
+    const formulario = document.getElementById('formEvaluacion');
+    const mensajeFinal = document.getElementById('mensajeFinal');
+
+    formulario.addEventListener('submit', function (evento) {
+      evento.preventDefault();
+
+      if (!formulario.reportValidity()) return;
+
+      formulario.hidden = true;
+      mensajeFinal.style.display = 'block';
+      mensajeFinal.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+    });
+  </script>
+
+</body>
+</html>
