@@ -542,3 +542,10 @@
   height: auto;
   border-radius: 10px;
 }
+
+.modulo-recurso__imagen {
+ display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
