@@ -39,11 +39,73 @@
       <section class="modulo-bloque">
         <h2>1. Trámites disponibles</h2>
 
-        <p>
-          <h3>Conocé los distintos trámites disponibles en CiDi:</h3>
-            <p>
-                [img]
-        </p>
+        <h3>Conocé los distintos trámites disponibles en CiDi:</h3>
+
+        <div class="carrusel" data-carrusel aria-roledescription="carrusel" aria-label="Trámites disponibles en CiDi">
+          <div class="carrusel__viewport">
+            <div class="carrusel__track">
+              <figure class="carrusel__slide">
+                <img src="../img/modulo_3/1.jpeg" alt="Trámites disponibles en CiDi - imagen 1" loading="lazy">
+              </figure>
+              <figure class="carrusel__slide">
+                <img src="../img/modulo_3/2.jpeg" alt="Trámites disponibles en CiDi - imagen 2" loading="lazy">
+              </figure>
+              <figure class="carrusel__slide">
+                <img src="../img/modulo_3/3.jpeg" alt="Trámites disponibles en CiDi - imagen 3" loading="lazy">
+              </figure>
+              <figure class="carrusel__slide">
+                <img src="../img/modulo_3/4.jpeg" alt="Trámites disponibles en CiDi - imagen 4" loading="lazy">
+              </figure>
+              <figure class="carrusel__slide">
+                <img src="../img/modulo_3/5.jpeg" alt="Trámites disponibles en CiDi - imagen 5" loading="lazy">
+              </figure>
+              <figure class="carrusel__slide">
+                <img src="../img/modulo_3/6.jpeg" alt="Trámites disponibles en CiDi - imagen 6" loading="lazy">
+              </figure>
+              <figure class="carrusel__slide">
+                <img src="../img/modulo_3/7.jpeg" alt="Trámites disponibles en CiDi - imagen 7" loading="lazy">
+              </figure>
+              <figure class="carrusel__slide">
+                <img src="../img/modulo_3/8.jpeg" alt="Trámites disponibles en CiDi - imagen 8" loading="lazy">
+              </figure>
+              <figure class="carrusel__slide">
+                <img src="../img/modulo_3/9.jpeg" alt="Trámites disponibles en CiDi - imagen 9" loading="lazy">
+              </figure>
+              <figure class="carrusel__slide">
+                <img src="../img/modulo_3/10.jpeg" alt="Trámites disponibles en CiDi - imagen 10" loading="lazy">
+              </figure>
+              <figure class="carrusel__slide">
+                <img src="../img/modulo_3/11.jpeg" alt="Trámites disponibles en CiDi - imagen 11" loading="lazy">
+              </figure>
+              <figure class="carrusel__slide">
+                <img src="../img/modulo_3/12.jpeg" alt="Trámites disponibles en CiDi - imagen 12" loading="lazy">
+              </figure>
+              <figure class="carrusel__slide">
+                <img src="../img/modulo_3/13.jpeg" alt="Trámites disponibles en CiDi - imagen 13" loading="lazy">
+              </figure>
+              <figure class="carrusel__slide">
+                <img src="../img/modulo_3/14.jpeg" alt="Trámites disponibles en CiDi - imagen 14" loading="lazy">
+              </figure>
+            </div>
+          </div>
+
+          <button class="carrusel__btn carrusel__btn--prev" type="button" aria-label="Imagen anterior">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+          </button>
+
+          <button class="carrusel__btn carrusel__btn--next" type="button" aria-label="Imagen siguiente">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">
+              <path d="m9 6 6 6-6 6"/>
+            </svg>
+          </button>
+
+          <div class="carrusel__pie">
+            <div class="carrusel__dots" role="tablist" aria-label="Seleccionar imagen"></div>
+            <span class="carrusel__contador" aria-live="polite">1 / 14</span>
+          </div>
+        </div>
       </section>
 
       <section class="modulo-bloque">
@@ -82,5 +144,51 @@
 
     </div>
   </main>
+
+  <script>
+    document.querySelectorAll('[data-carrusel]').forEach(function (carrusel) {
+      var track = carrusel.querySelector('.carrusel__track');
+      var slides = carrusel.querySelectorAll('.carrusel__slide');
+      var prev = carrusel.querySelector('.carrusel__btn--prev');
+      var next = carrusel.querySelector('.carrusel__btn--next');
+      var dots = carrusel.querySelector('.carrusel__dots');
+      var contador = carrusel.querySelector('.carrusel__contador');
+      var actual = 0;
+
+      slides.forEach(function (_, i) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'carrusel__dot';
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', 'Ir a la imagen ' + (i + 1));
+        dot.addEventListener('click', function () { irA(i); });
+        dots.appendChild(dot);
+      });
+
+      var botonesDot = dots.querySelectorAll('.carrusel__dot');
+
+      function irA(indice) {
+        actual = (indice + slides.length) % slides.length;
+        track.style.transform = 'translateX(' + (-actual * 100) + '%)';
+
+        botonesDot.forEach(function (dot, i) {
+          dot.classList.toggle('activo', i === actual);
+          dot.setAttribute('aria-selected', i === actual ? 'true' : 'false');
+        });
+
+        contador.textContent = (actual + 1) + ' / ' + slides.length;
+      }
+
+      prev.addEventListener('click', function () { irA(actual - 1); });
+      next.addEventListener('click', function () { irA(actual + 1); });
+
+      carrusel.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowLeft') { irA(actual - 1); }
+        if (event.key === 'ArrowRight') { irA(actual + 1); }
+      });
+
+      irA(0);
+    });
+  </script>
 </body>
 </html>
