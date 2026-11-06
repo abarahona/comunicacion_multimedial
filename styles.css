@@ -845,3 +845,359 @@ body { transition: background-color .2s ease, color .2s ease; }
 :root[data-tema="oscuro"] .hero__etiqueta,
 :root[data-tema="oscuro"] .modulo-etiqueta,
 :root[data-tema="oscuro"] .mensaje--usuario { color: var(--verde-oscuro); }
+
+/* ============ ACCESIBILIDAD ============ */
+:focus-visible {
+  outline: 3px solid var(--verde);
+  outline-offset: 2px;
+}
+
+.saltar-contenido {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 200;
+  padding: 12px 18px;
+  background: var(--verde);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 8px;
+  transform: translateY(-160%);
+  transition: transform .15s ease;
+}
+
+.saltar-contenido:focus {
+  transform: translateY(0);
+  text-decoration: none;
+}
+
+.a11y-flotante {
+  position: fixed;
+  left: 22px;
+  bottom: 22px;
+  z-index: 60;
+  width: 54px;
+  height: 54px;
+  border: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--tinta);
+  color: var(--blanco);
+  cursor: pointer;
+  box-shadow: var(--sombra);
+}
+
+.a11y-flotante:hover {
+  background: var(--verde-oscuro);
+  color: var(--blanco);
+}
+
+.a11y-panel {
+  position: fixed;
+  left: 22px;
+  bottom: 86px;
+  z-index: 61;
+  width: min(340px, calc(100vw - 44px));
+  max-height: calc(100vh - 118px);
+  overflow-y: auto;
+  padding: 18px;
+  background: var(--blanco);
+  color: var(--tinta);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  box-shadow: var(--sombra);
+  display: none;
+}
+
+.a11y-panel.abierto { display: block; }
+
+.a11y-panel__cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.a11y-panel h2 { font-size: 1.1rem; }
+
+.a11y-panel__cerrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--tinta);
+  cursor: pointer;
+}
+
+.a11y-panel__cerrar:hover { color: var(--verde-oscuro); }
+
+.a11y-seccion {
+  padding: 14px 0;
+  border-top: 1px solid var(--borde);
+}
+
+.a11y-seccion h3 {
+  margin-bottom: 10px;
+  color: var(--gris);
+  font-size: .82rem;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+}
+
+.a11y-seccion h3 label { cursor: pointer; }
+
+.a11y-fila {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.a11y-valor {
+  min-width: 56px;
+  text-align: center;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.a11y-opcion {
+  padding: 8px 14px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  background: var(--fondo);
+  color: var(--tinta);
+  font: inherit;
+  font-size: .9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.a11y-opcion:hover { border-color: var(--verde); }
+
+.a11y-opcion[aria-pressed="true"] {
+  background: var(--verde-claro);
+  border-color: var(--verde);
+  color: var(--verde-oscuro);
+}
+
+.a11y-opcion:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.a11y-opcion--texto {
+  min-width: 48px;
+  font-size: 1rem;
+}
+
+.a11y-enlace {
+  margin-top: 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--verde-oscuro);
+  font: inherit;
+  font-size: .85rem;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.a11y-select {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  background: var(--fondo);
+  color: var(--tinta);
+  font: inherit;
+  font-size: .92rem;
+}
+
+.a11y-nota {
+  margin-bottom: 10px;
+  color: var(--gris);
+  font-size: .85rem;
+}
+
+.a11y-estado {
+  min-height: 1.2em;
+  margin-top: 8px;
+  color: var(--gris);
+  font-size: .82rem;
+}
+
+.a11y-panel [hidden] { display: none !important; }
+
+/* ============ PALETAS PARA DALTONISMO ============ */
+:root[data-vision="protanopia"],
+:root[data-vision="deuteranopia"] {
+  --verde: #0072B2;
+  --verde-oscuro: #005F94;
+  --verde-claro: #DCEBF7;
+  --amarillo: #E69F00;
+}
+
+:root[data-vision="protanopia"][data-tema="oscuro"],
+:root[data-vision="deuteranopia"][data-tema="oscuro"] {
+  --verde: #3FA7DF;
+  --verde-oscuro: #8FD0F5;
+  --verde-claro: #103248;
+  --amarillo: #F2C14E;
+}
+
+:root[data-vision="tritanopia"] {
+  --verde: #CC79A7;
+  --verde-oscuro: #9C4E7C;
+  --verde-claro: #F4E1EC;
+  --amarillo: #56B4E9;
+}
+
+:root[data-vision="tritanopia"][data-tema="oscuro"] {
+  --verde: #D98BB8;
+  --verde-oscuro: #F0B8D6;
+  --verde-claro: #3A1E2D;
+  --amarillo: #6FC3EF;
+}
+
+:root[data-vision="protanopia"] .logo svg rect:first-child,
+:root[data-vision="deuteranopia"] .logo svg rect:first-child,
+:root[data-vision="tritanopia"] .logo svg rect:first-child {
+  fill: var(--verde);
+}
+
+/* ============ ALTO CONTRASTE ============ */
+:root[data-contraste="alto"] {
+  --verde: #FFD400;
+  --verde-oscuro: #FFE066;
+  --verde-claro: #000000;
+  --tinta: #FFFFFF;
+  --gris: #F2F2F2;
+  --gris-claro: #FFFFFF;
+  --amarillo: #FFD400;
+  --fondo: #000000;
+  --blanco: #000000;
+  --borde: #FFFFFF;
+  --sombra: none;
+  color-scheme: dark;
+}
+
+:root[data-contraste="alto"] body {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+:root[data-contraste="alto"] .header,
+:root[data-contraste="alto"] .modulo-header,
+:root[data-contraste="alto"] .nav,
+:root[data-contraste="alto"] .footer,
+:root[data-contraste="alto"] .banner,
+:root[data-contraste="alto"] .ayuda-flotante,
+:root[data-contraste="alto"] .ayuda-flotante__panel,
+:root[data-contraste="alto"] .a11y-panel,
+:root[data-contraste="alto"] .tarjeta,
+:root[data-contraste="alto"] .paso,
+:root[data-contraste="alto"] .ayuda,
+:root[data-contraste="alto"] .modulo-bloque,
+:root[data-contraste="alto"] .pregunta,
+:root[data-contraste="alto"] .mensaje {
+  background: #000000;
+  border-color: #FFFFFF;
+  box-shadow: none;
+}
+
+:root[data-contraste="alto"] .hero,
+:root[data-contraste="alto"] .modulo-hero,
+:root[data-contraste="alto"] .evaluacion-hero {
+  background: #000000;
+  border-color: #FFFFFF;
+}
+
+:root[data-contraste="alto"] a,
+:root[data-contraste="alto"] .a11y-enlace {
+  color: #FFD400;
+  text-decoration: underline;
+}
+
+:root[data-contraste="alto"] .btn-primario,
+:root[data-contraste="alto"] .btn-amarillo,
+:root[data-contraste="alto"] .saltar-contenido {
+  background: #FFD400;
+  color: #000000;
+}
+
+:root[data-contraste="alto"] .btn-secundario {
+  background: #000000;
+  color: #FFD400;
+  border-color: #FFD400;
+}
+
+:root[data-contraste="alto"] .nav__menu a { color: #FFFFFF; }
+:root[data-contraste="alto"] .nav__menu a:hover { background: #FFD400; color: #000000; }
+:root[data-contraste="alto"] .footer a { color: #FFFFFF; }
+:root[data-contraste="alto"] .footer a:hover { color: #FFD400; }
+
+:root[data-contraste="alto"] .mensaje--usuario {
+  background: #FFD400;
+  color: #000000;
+  border-color: #000000;
+}
+
+:root[data-contraste="alto"] .buscador {
+  background: #000000;
+  border-color: #FFD400;
+}
+
+:root[data-contraste="alto"] .buscador input,
+:root[data-contraste="alto"] .respuesta-texto,
+:root[data-contraste="alto"] .a11y-opcion,
+:root[data-contraste="alto"] .a11y-select {
+  background: #000000;
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+}
+
+:root[data-contraste="alto"] .a11y-opcion[aria-pressed="true"] {
+  background: #FFD400;
+  color: #000000;
+  border-color: #FFD400;
+}
+
+:root[data-contraste="alto"] .modulo-video,
+:root[data-contraste="alto"] .carrusel__viewport,
+:root[data-contraste="alto"] .lightbox__imagen {
+  background: #000000;
+}
+
+:root[data-contraste="alto"] .icono-tema,
+:root[data-contraste="alto"] .icono-buscar,
+:root[data-contraste="alto"] .modulo-volver {
+  color: #FFD400;
+}
+
+:root[data-contraste="alto"] .tarjeta:hover,
+:root[data-contraste="alto"] .tarjeta__icono {
+  border-color: #FFD400;
+  color: #FFD400;
+}
+
+@media (max-width: 380px) {
+  .a11y-flotante {
+    width: 50px;
+    height: 50px;
+    left: 16px;
+    bottom: 16px;
+  }
+
+  .a11y-panel {
+    left: 16px;
+    bottom: 76px;
+    max-height: calc(100vh - 104px);
+  }
+}
