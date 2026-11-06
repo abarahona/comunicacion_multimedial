@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es-ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso por QR · Capacitación Ciudadano Digital</title>
+  <meta name="description" content="Código QR para ingresar a la capacitación de Ciudadano Digital.">
+  <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2336CA70'/%3E%3Ccircle cx='16' cy='12' r='5' fill='%23fff'/%3E%3Cpath d='M6 26c0-5 4.5-8 10-8s10 3 10 8' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="tema.js"></script>
+
+  <style>
+    .qr-hero {
+      text-align: center;
+    }
+
+    .qr-hero p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .qr-contenido {
+      max-width: 620px;
+    }
+
+    .qr-tarjeta {
+      text-align: center;
+    }
+
+    .qr-caja {
+      display: inline-block;
+      padding: 18px;
+      background: #FFFFFF;
+      border: 1px solid var(--borde);
+      border-radius: 16px;
+      box-shadow: 0 10px 28px rgba(55, 64, 80, .14);
+    }
+
+    .qr-caja img {
+      display: block;
+      width: min(320px, 68vw);
+      height: auto;
+      image-rendering: pixelated;
+    }
+
+    .qr-url {
+      display: block;
+      margin: 20px 0 22px;
+      color: var(--gris);
+      font-size: .95rem;
+      word-break: break-all;
+    }
+
+    .qr-nota {
+      margin: 18px 0 0;
+      color: var(--gris);
+      font-size: .85rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="modulo-header">
+    <div class="contenedor">
+      <a class="modulo-volver" href="index.html">
+        ← Volver al inicio
+      </a>
+    </div>
+  </header>
+
+  <main class="pagina-modulo">
+
+    <section class="modulo-hero qr-hero">
+      <div class="modulo-hero__contenido">
+        <span class="modulo-etiqueta">
+          Capacitación CiDi
+        </span>
+
+        <h1>Ingresá a la capacitación</h1>
+
+        <p>
+          Escaneá el código QR con la cámara de tu celular para abrir la página
+          de Ciudadano Digital.
+        </p>
+      </div>
+    </section>
+
+    <div class="modulo-contenido qr-contenido">
+
+      <section class="modulo-bloque qr-tarjeta">
+        <div class="qr-caja">
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbwAAAG8AQMAAACffoKcAAAABlBMVEUfJDD///+TM172AAACEklEQVR42u2cQY6DMAxFrblA7n9LbpCZFmJ/G7qpRnIWD7GgkLeJvlz722Dzu+MwQEBAQMBPoPkx5us8L9adx2Xz+LEvD0DAL4+XCMel3LcI7e8877yeHpeAb8vYVcAerXpQvUK0B9IVYG/L2FXAZq2edzyoeqqQ0gO0CriDVkco87pYokWrgFvlq5EGiDjjEfkqYK9Wiw/w6cQHAOzWqh5R+xclj2J2sauAbTlA+ccP2/Z4Wo9WAbtqqxH6vKoqk0bAYapb4ipgsw9g0QLwpoDnAK7hJVp2FbCntirh9N4X8GYWOQDgLj6AR9En6zVqMbQK2BdXtT9V7VZNWdEq4AY5gIfQh59WBgbYVcAGrUYBJfmAegJuWxFXAft9gBU8o4Za//vhDxBXAXeIqz6kauKjqk+Fvwq4g1Y9hCYHNXyAyAHwVwHbtTpT3ypS0xVgNeSiVcD2HmsMAxx2b7a6hukFAPb2AnRmVUdYtdkq0ZVdBWyqrSy1/qOGmmG36kq0CtjsA+S8VC+SLYBWAXtzgIfgael1AElc0SpgV1yN9wLGLO+u6n0Zc2VXAdvi6hk2U1OgGK1adqFVwBat5u+ulBkAy++5oFXAXq1GULUoqdKjkjOgVcBurWqxX7LZWINWATfRqtXBqkhrBzOBgNvkqzN/M3DK7Mrg+wCAe/kAZRTQsvWKvwrYqFU+pAwICAj4f+AvJzNlOWeYu8sAAAAASUVORK5CYII="
+            alt="Código QR para ingresar a https://abarahona.github.io/comunicacion_multimedial/"
+            width="336" height="336">
+        </div>
+
+        <a class="qr-url" href="https://abarahona.github.io/comunicacion_multimedial/" target="_blank" rel="noopener">
+          https://abarahona.github.io/comunicacion_multimedial/
+        </a>
+
+        <a class="btn btn-primario" href="https://abarahona.github.io/comunicacion_multimedial/" target="_blank" rel="noopener">
+          Abrir la página →
+        </a>
+
+        <p class="qr-nota">
+          También podés ingresar desde este dispositivo usando el botón.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>
