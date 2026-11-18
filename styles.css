@@ -618,6 +618,11 @@
   border-radius: 10px;
 }
 
+.video-contenedor audio {
+  display: block;
+  width: 100%;
+}
+
 .modulo-recurso__imagen {
  display: block;
   max-width: 100%;
