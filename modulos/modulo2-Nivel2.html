@@ -67,26 +67,172 @@
         </div>
       </section>
 
-      <section class="modulo-bloque">
+      <section class="modulo-bloque" id="verificar-conocimiento-modulo2">
         <h2>Verificá tu conocimiento</h2>
+        <p>Seleccioná una opción por pregunta y enviá tus respuestas para comprobar tu resultado.</p>
 
-        <h3>preguntas</h3>
-        <p>
-          Agregá acá formulario con visualizacion de resultado
-        </p>
+        <form id="quiz-form-modulo2" class="quiz-form" novalidate>
+          <fieldset class="quiz-question">
+            <legend>1. ¿Qué significa tener una cuenta de CiDi de nivel 2?</legend>
+            <label class="quiz-option"><input type="radio" name="q1" value="A"> Que el usuario puede acceder únicamente a información pública.</label>
+            <label class="quiz-option"><input type="radio" name="q1" value="B"> Que el usuario tiene su identidad validada y puede acceder a más servicios digitales.</label>
+            <label class="quiz-option"><input type="radio" name="q1" value="C"> Que el usuario tiene permisos de administrador en la plataforma.</label>
+            <label class="quiz-option"><input type="radio" name="q1" value="D"> Que el usuario puede modificar los datos de otras personas.</label>
+          </fieldset>
+
+          <fieldset class="quiz-question">
+            <legend>2. ¿Qué debería hacer una persona que todavía tiene una cuenta de nivel 1 y quiere acceder a las funcionalidades del nivel 2?</legend>
+            <label class="quiz-option"><input type="radio" name="q2" value="A"> Crear una segunda cuenta con otro correo electrónico.</label>
+            <label class="quiz-option"><input type="radio" name="q2" value="B"> Solicitar una cuenta nueva en otra plataforma.</label>
+            <label class="quiz-option"><input type="radio" name="q2" value="C"> Realizar el procedimiento de validación de identidad correspondiente.</label>
+            <label class="quiz-option"><input type="radio" name="q2" value="D"> Esperar a que el sistema actualice automáticamente su cuenta.</label>
+          </fieldset>
+
+          <fieldset class="quiz-question">
+            <legend>3. ¿Cuál es una de las principales ventajas de tener CiDi nivel 2?</legend>
+            <label class="quiz-option"><input type="radio" name="q3" value="A"> Poder realizar más trámites y gestiones de manera online.</label>
+            <label class="quiz-option"><input type="radio" name="q3" value="B"> No necesitar recordar la contraseña.</label>
+            <label class="quiz-option"><input type="radio" name="q3" value="C"> Acceder automáticamente a todos los servicios del Gobierno nacional.</label>
+            <label class="quiz-option"><input type="radio" name="q3" value="D"> Evitar cualquier tipo de validación de identidad.</label>
+          </fieldset>
+
+          <fieldset class="quiz-question">
+            <legend>4. Una persona recibe un mensaje de alguien que le ofrece validar su cuenta de CiDi a cambio de su contraseña y una fotografía de su DNI. ¿Cómo debería actuar?</legend>
+            <label class="quiz-option"><input type="radio" name="q4" value="A"> Compartir la información si la persona parece confiable.</label>
+            <label class="quiz-option"><input type="radio" name="q4" value="B"> Enviar solamente la contraseña.</label>
+            <label class="quiz-option"><input type="radio" name="q4" value="C"> No compartir sus credenciales ni documentación por canales no oficiales y consultar los medios oficiales de CiDi.</label>
+            <label class="quiz-option"><input type="radio" name="q4" value="D"> Facilitar los datos para acelerar el trámite.</label>
+          </fieldset>
+
+          <fieldset class="quiz-question">
+            <legend>5. ¿Cuál es el principal propósito de contar con una identidad digital validada en Ciudadano Digital?</legend>
+            <label class="quiz-option"><input type="radio" name="q5" value="A"> Tener un perfil personalizado dentro de una plataforma gubernamental.</label>
+            <label class="quiz-option"><input type="radio" name="q5" value="B"> Poder realizar gestiones digitales de manera segura, con una identidad verificada y acceso a servicios habilitados para ese nivel.</label>
+            <label class="quiz-option"><input type="radio" name="q5" value="C"> Evitar todos los procedimientos administrativos presenciales.</label>
+            <label class="quiz-option"><input type="radio" name="q5" value="D"> Obtener automáticamente beneficios y prestaciones del Gobierno.</label>
+          </fieldset>
+
+          <p id="quiz-validation-modulo2" class="quiz-validation" role="alert" hidden></p>
+
+          <div class="quiz-actions">
+            <button type="submit" class="btn btn-primario">Enviar respuestas</button>
+            <button type="reset" class="btn btn-secundario">Reiniciar</button>
+          </div>
+        </form>
+
+        <section id="quiz-results-modulo2" class="quiz-results" aria-live="polite" hidden>
+          <h3>Resultado</h3>
+          <p id="quiz-score-modulo2" class="quiz-score"></p>
+          <ul id="quiz-feedback-modulo2" class="quiz-feedback"></ul>
         </section>
+      </section>
 
       <nav class="modulo-navegacion">
         <a class="btn btn-secundario" href="../index.html">
           ← Volver al inicio
         </a>
 
-        <a class="btn btn-primario" href="modulo4-Firma.html">
+        <a class="btn btn-primario" href="modulo3-Tramites.html">
           Siguiente módulo →
         </a>
       </nav>
 
     </div>
   </main>
+  <script>
+    (function () {
+      const form = document.getElementById('quiz-form-modulo2');
+      if (!form) return;
+      const validation = document.getElementById('quiz-validation-modulo2');
+      const results = document.getElementById('quiz-results-modulo2');
+      const scoreEl = document.getElementById('quiz-score-modulo2');
+      const feedbackEl = document.getElementById('quiz-feedback-modulo2');
+      const answerKey = { q1: 'B', q2: 'C', q3: 'A', q4: 'C', q5: 'B' };
+      const labels = {
+        q1: '1. ¿Qué significa tener una cuenta de CiDi de nivel 2?',
+        q2: '2. ¿Qué debería hacer una persona que todavía tiene una cuenta de nivel 1 y quiere acceder a las funcionalidades del nivel 2?',
+        q3: '3. ¿Cuál es una de las principales ventajas de tener CiDi nivel 2?',
+        q4: '4. Una persona recibe un mensaje de alguien que le ofrece validar su cuenta de CiDi a cambio de su contraseña y una fotografía de su DNI. ¿Cómo debería actuar?',
+        q5: '5. ¿Cuál es el principal propósito de contar con una identidad digital validada en Ciudadano Digital?'
+      };
+      const optionText = {
+        q1: {
+          A: 'Que el usuario puede acceder únicamente a información pública.',
+          B: 'Que el usuario tiene su identidad validada y puede acceder a más servicios digitales.',
+          C: 'Que el usuario tiene permisos de administrador en la plataforma.',
+          D: 'Que el usuario puede modificar los datos de otras personas.'
+        },
+        q2: {
+          A: 'Crear una segunda cuenta con otro correo electrónico.',
+          B: 'Solicitar una cuenta nueva en otra plataforma.',
+          C: 'Realizar el procedimiento de validación de identidad correspondiente.',
+          D: 'Esperar a que el sistema actualice automáticamente su cuenta.'
+        },
+        q3: {
+          A: 'Poder realizar más trámites y gestiones de manera online.',
+          B: 'No necesitar recordar la contraseña.',
+          C: 'Acceder automáticamente a todos los servicios del Gobierno nacional.',
+          D: 'Evitar cualquier tipo de validación de identidad.'
+        },
+        q4: {
+          A: 'Compartir la información si la persona parece confiable.',
+          B: 'Enviar solamente la contraseña.',
+          C: 'No compartir sus credenciales ni documentación por canales no oficiales y consultar los medios oficiales de CiDi.',
+          D: 'Facilitar los datos para acelerar el trámite.'
+        },
+        q5: {
+          A: 'Tener un perfil personalizado dentro de una plataforma gubernamental.',
+          B: 'Poder realizar gestiones digitales de manera segura, con una identidad verificada y acceso a servicios habilitados para ese nivel.',
+          C: 'Evitar todos los procedimientos administrativos presenciales.',
+          D: 'Obtener automáticamente beneficios y prestaciones del Gobierno.'
+        }
+      };
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const missing = [];
+        Object.keys(answerKey).forEach(function (name) {
+          if (!form.querySelector('input[name="' + name + '"]:checked')) missing.push(name);
+        });
+        if (missing.length) {
+          validation.hidden = false;
+          validation.textContent = 'Seleccioná una opción en todas las preguntas antes de enviar.';
+          results.hidden = true;
+          form.querySelector('input[name="' + missing[0] + '"]').focus();
+          return;
+        }
+        validation.hidden = true;
+        validation.textContent = '';
+        let score = 0;
+        feedbackEl.innerHTML = '';
+        Object.keys(answerKey).forEach(function (name) {
+          const selected = form.querySelector('input[name="' + name + '"]:checked').value;
+          const correct = selected === answerKey[name];
+          if (correct) score++;
+          const li = document.createElement('li');
+          li.className = correct ? 'quiz-item quiz-item--ok' : 'quiz-item quiz-item--error';
+          li.textContent = labels[name] + ' — ' + (correct ? 'Correcta.' : 'Incorrecta. Respuesta correcta: ' + optionText[name][answerKey[name]] + '.');
+          feedbackEl.appendChild(li);
+        });
+        scoreEl.textContent = 'Obtuviste ' + score + ' de ' + Object.keys(answerKey).length + ' respuestas correctas.';
+        results.hidden = false;
+      });
+
+      form.addEventListener('reset', function () {
+        validation.hidden = true;
+        validation.textContent = '';
+        results.hidden = true;
+        feedbackEl.innerHTML = '';
+        scoreEl.textContent = '';
+      });
+
+      form.addEventListener('change', function () {
+        if (!validation.hidden) {
+          validation.hidden = true;
+          validation.textContent = '';
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
