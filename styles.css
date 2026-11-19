@@ -330,59 +330,6 @@
     .ayuda h3 { font-size: 1.05rem; margin-bottom: 6px; }
     .ayuda p { color: var(--gris); font-size: .92rem; margin-bottom: 12px; }
 
-    /* ============ CHAT AYUDA FLOTANTE ============ */
-    .ayuda-flotante {
-      position: fixed;
-      right: 22px;
-      bottom: 22px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--tinta);
-      color: #fff;
-      border: 0;
-      border-radius: 40px;
-      padding: 12px 20px;
-      font: inherit;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: var(--sombra);
-      z-index: 60;
-    }
-    .ayuda-flotante:hover { background: #2a323f; }
-
-    .ayuda-flotante__panel {
-      position: fixed;
-      right: 22px;
-      bottom: 82px;
-      width: 320px;
-      background: var(--blanco);
-      border: 1px solid var(--borde);
-      border-radius: 14px;
-      box-shadow: var(--sombra);
-      overflow: hidden;
-      display: none;
-      z-index: 61;
-    }
-    .ayuda-flotante__panel.abierto { display: block; }
-    .ayuda-flotante__header {
-      background: var(--verde);
-      color: #fff;
-      padding: 14px 16px;
-      font-weight: 600;
-    }
-    .ayuda-flotante__cuerpo { padding: 12px 16px; max-height: 260px; overflow-y: auto; }
-    .mensaje {
-      background: var(--fondo);
-      border: 1px solid var(--borde);
-      border-radius: 12px;
-      padding: 10px 12px;
-      margin-bottom: 8px;
-      font-size: .88rem;
-      color: var(--tinta);
-    }
-    .mensaje--usuario { background: var(--verde-claro); border-color: transparent; text-align: right; }
-
     /* ============ FOOTER ============ */
     .footer { background: var(--tinta); color: #C9D2E0; margin-top: auto; }
     .footer__inner {
@@ -502,6 +449,11 @@
 .modulo-bloque ol {
   padding-left: 24px;
   margin: 12px 0;
+}
+
+.modulo-bloque ol.pasos {
+  list-style: none;
+  padding-left: 0;
 }
 
 .modulo-bloque li {
@@ -862,8 +814,7 @@ body { transition: background-color .2s ease, color .2s ease; }
 :root[data-tema="oscuro"] .header { background: #151A22; }
 
 :root[data-tema="oscuro"] .nav,
-:root[data-tema="oscuro"] .footer,
-:root[data-tema="oscuro"] .ayuda-flotante { background: #0B0E13; }
+:root[data-tema="oscuro"] .footer { background: #0B0E13; }
 
 :root[data-tema="oscuro"] .banner {
   background: linear-gradient(120deg, #0B0E13 0%, #1E2A36 100%);
@@ -901,8 +852,7 @@ body { transition: background-color .2s ease, color .2s ease; }
 }
 
 :root[data-tema="oscuro"] .hero__etiqueta,
-:root[data-tema="oscuro"] .modulo-etiqueta,
-:root[data-tema="oscuro"] .mensaje--usuario { color: var(--verde-oscuro); }
+:root[data-tema="oscuro"] .modulo-etiqueta { color: var(--verde-oscuro); }
 
 /* ============ ACCESIBILIDAD ============ */
 :focus-visible {
@@ -1156,15 +1106,12 @@ body { transition: background-color .2s ease, color .2s ease; }
 :root[data-contraste="alto"] .nav,
 :root[data-contraste="alto"] .footer,
 :root[data-contraste="alto"] .banner,
-:root[data-contraste="alto"] .ayuda-flotante,
-:root[data-contraste="alto"] .ayuda-flotante__panel,
 :root[data-contraste="alto"] .a11y-panel,
 :root[data-contraste="alto"] .tarjeta,
 :root[data-contraste="alto"] .paso,
 :root[data-contraste="alto"] .ayuda,
 :root[data-contraste="alto"] .modulo-bloque,
-:root[data-contraste="alto"] .pregunta,
-:root[data-contraste="alto"] .mensaje {
+:root[data-contraste="alto"] .pregunta {
   background: #000000;
   border-color: #FFFFFF;
   box-shadow: none;
@@ -1200,12 +1147,6 @@ body { transition: background-color .2s ease, color .2s ease; }
 :root[data-contraste="alto"] .nav__menu a:hover { background: #FFD400; color: #000000; }
 :root[data-contraste="alto"] .footer a { color: #FFFFFF; }
 :root[data-contraste="alto"] .footer a:hover { color: #FFD400; }
-
-:root[data-contraste="alto"] .mensaje--usuario {
-  background: #FFD400;
-  color: #000000;
-  border-color: #000000;
-}
 
 :root[data-contraste="alto"] .buscador {
   background: #000000;
