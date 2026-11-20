@@ -10,14 +10,18 @@
   <script src="../tema.js"></script>
   <script src="../accesibilidad.js"></script>
   <script src="../chatbot/chatbot.js"></script>
+  <script src="../reporte-quizzes.js"></script>
 </head>
 
 <body>
   <header class="modulo-header">
     <div class="contenedor">
-      <a class="modulo-volver" href="../index.html">
-        ← Volver a los módulos
-      </a>
+      <div class="modulo-header__enlaces">
+        <a class="modulo-volver" href="../index.html">
+          ← Volver a los módulos
+        </a>
+        <a class="modulo-volver" href="../dashboard.html">Mi progreso →</a>
+      </div>
     </div>
   </header>
 
@@ -367,11 +371,18 @@
         validation.hidden = true;
         validation.textContent = '';
         var score = 0;
+        var respuestas = [];
         feedbackEl.innerHTML = '';
         Object.keys(answerKey).forEach(function (name) {
           var selected = form.querySelector('input[name="' + name + '"]:checked').value;
           var correct = selected === answerKey[name];
           if (correct) score++;
+          respuestas.push({
+            pregunta: labels[name],
+            elegida: optionText[name][selected],
+            correcta: correct,
+            respuestaCorrecta: optionText[name][answerKey[name]]
+          });
           var li = document.createElement('li');
           li.className = correct ? 'quiz-item quiz-item--ok' : 'quiz-item quiz-item--error';
           li.textContent = labels[name] + ' — ' + (correct ? 'Correcta.' : 'Incorrecta. Respuesta correcta: ' + optionText[name][answerKey[name]] + '.');
@@ -379,6 +390,15 @@
         });
         scoreEl.textContent = 'Obtuviste ' + score + ' de ' + Object.keys(answerKey).length + ' respuestas correctas.';
         results.hidden = false;
+        if (window.ReporteQuizzes) {
+          window.ReporteQuizzes.guardar({
+            modulo: 3,
+            titulo: 'Gestión de trámites',
+            correctas: score,
+            total: Object.keys(answerKey).length,
+            respuestas: respuestas
+          });
+        }
       });
 
       form.addEventListener('reset', function () {

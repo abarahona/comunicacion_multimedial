@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es-ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi progreso · Capacitación CiDi</title>
+  <meta name="description" content="Reporte de respuestas de los quizzes de la capacitación Ciudadano Digital.">
+  <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2336CA70'/%3E%3Ccircle cx='16' cy='12' r='5' fill='%23fff'/%3E%3Cpath d='M6 26c0-5 4.5-8 10-8s10 3 10 8' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="tema.js"></script>
+  <script src="accesibilidad.js"></script>
+  <script src="chatbot/chatbot.js"></script>
+  <script src="reporte-quizzes.js"></script>
+</head>
+<body>
+
+  <header class="header">
+    <div class="contenedor header__inner">
+      <a class="logo" href="index.html" aria-label="Inicio">
+        <svg width="46" height="46" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+          <rect width="32" height="32" rx="7" fill="#36CA70"/>
+          <circle cx="16" cy="12" r="5" fill="#FFFFFF"/>
+          <path d="M6 27c0-5 4.5-8.5 10-8.5S26 22 26 27" fill="#FFFFFF"/>
+          <rect x="2" y="29.4" width="28" height="2.6" rx="1.3" fill="#F6BD2B"/>
+        </svg>
+        <span class="logo__marca">
+          <span class="logo__nombre">Ciudadano Digital</span>
+          <span class="logo__sub">Gobierno de Córdoba</span>
+        </span>
+      </a>
+      <div class="header__acciones">
+        <a class="btn btn-primario" href="index.html#modulos">Ver módulos</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav" aria-label="Navegación principal">
+    <div class="contenedor">
+      <ul class="nav__menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html#material">Material de apoyo</a></li>
+        <li><a href="index.html#ayuda">Ayuda</a></li>
+        <li><a href="dashboard.html" class="activo" aria-current="page">Mi progreso</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="contenidoPrincipal">
+    <section class="modulo-hero">
+      <div class="modulo-hero__contenido">
+        <span class="modulo-etiqueta">Panel de resultados</span>
+        <h1>Mi progreso</h1>
+        <p>
+          Revisá las respuestas que elegiste en los quizzes, tu puntaje por módulo
+          y la evolución de tus intentos. Los datos se guardan solo en este navegador.
+        </p>
+      </div>
+    </section>
+
+    <div class="modulo-contenido">
+      <section class="modulo-bloque" aria-labelledby="resumenTitulo">
+        <h2 id="resumenTitulo">Resumen general</h2>
+        <div id="resumenGeneral" class="dashboard-stats" aria-live="polite"></div>
+      </section>
+
+      <section class="modulo-bloque" aria-labelledby="avanceTitulo">
+        <h2 id="avanceTitulo">Avance por módulo</h2>
+        <p class="seccion__sub">Mejor resultado y promedio de los intentos registrados en cada quiz.</p>
+        <div id="avanceModulos" class="dashboard-modulos"></div>
+      </section>
+
+      <section class="modulo-bloque" aria-labelledby="historialTitulo">
+        <h2 id="historialTitulo">Historial de respuestas</h2>
+        <p class="seccion__sub">Cada intento muestra la pregunta, la opción que elegiste y la respuesta correcta.</p>
+        <div class="dashboard-controles">
+          <label for="filtroModulo">
+            Filtrar por módulo
+            <select id="filtroModulo">
+              <option value="todos">Todos los módulos</option>
+              <option value="1">Módulo 1 · Introducción</option>
+              <option value="2">Módulo 2 · Nivel 2</option>
+              <option value="3">Módulo 3 · Trámites</option>
+              <option value="4">Módulo 4 · Firma CiDi</option>
+            </select>
+          </label>
+          <button type="button" class="btn btn-secundario" id="btnBorrar">Borrar historial</button>
+        </div>
+        <p id="dashboardEstado" class="dashboard-estado" role="status" aria-live="polite"></p>
+        <div id="historialRespuestas" class="dashboard-historial"></div>
+      </section>
+
+      <nav class="modulo-navegacion">
+        <a class="btn btn-secundario" href="index.html">← Volver al inicio</a>
+        <a class="btn btn-primario" href="modulos/modulo1-Intro.html">Continuar capacitación →</a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="contenedor footer__inner">
+      <div>
+        <h4>Capacitación</h4>
+        <ul>
+          <li><a href="index.html#modulos">Módulos</a></li>
+          <li><a href="index.html#material">Material de apoyo</a></li>
+          <li><a href="dashboard.html">Mi progreso</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ciudadano Digital</h4>
+        <ul>
+          <li><a href="https://cidi.cba.gov.ar/portal-publico/" target="_blank" rel="noopener noreferrer">Sobre CiDi</a></li>
+          <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      Gobierno de la Provincia de Córdoba · Capacitación para usuarios CiDi
+    </div>
+  </footer>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

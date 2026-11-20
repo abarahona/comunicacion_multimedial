@@ -28,10 +28,13 @@ Todo el estado se comparte entre páginas únicamente por `localStorage` y event
 ```
 /
 ├── index.html                  # Inicio y catálogo de módulos
+├── dashboard.html              # Reporte de respuestas de los quizzes
 ├── preguntas-frecuentes.html   # FAQ (17 entradas)
 ├── qr.html                     # Código QR de acceso al sitio
-├── styles.css                  # Estilos globales (1.317 líneas)
+├── styles.css                  # Estilos globales
 ├── script.js                   # Navegación, buscador y puente al chatbot
+├── reporte-quizzes.js          # Persistencia de intentos de quizzes
+├── dashboard.js                # Render del reporte de respuestas
 ├── tema.js                     # Modo claro/oscuro
 ├── accesibilidad.js            # Panel de accesibilidad
 ├── .github/workflows/static.yml# Deploy a GitHub Pages
@@ -138,7 +141,7 @@ Código QR embebido en base64 que apunta al deployment de GitHub Pages, con bot�
 - Si faltan respuestas: mensaje `role="alert"`, resultados ocultos y foco en la primera pregunta sin responder.
 - Al corregir: puntaje, feedback por opción y clases `quiz-item--ok` / `quiz-item--error`.
 - Botón de reinicio que limpia respuestas y resultados.
-- Los resultados **no se envían ni se guardan**.
+- Los resultados **no se envían a ningún servidor**, pero se guardan en `localStorage` para el reporte del dashboard.
 
 | Módulo | ID del formulario | Preguntas |
 |---|---|---|
@@ -157,6 +160,14 @@ Código QR embebido en base64 que apunta al deployment de GitHub Pages, con bot�
 - Formulario con dos grupos de radios `required`, checkboxes y una textarea.
 - Al enviar: `reportValidity()`, oculta el formulario y muestra mensaje final con scroll suave.
 - Actualmente es una plantilla: no corrige respuestas ni calcula puntaje.
+
+### 5.8 Reporte de respuestas (`dashboard.html`)
+
+- Cada envío válido de los quizzes 1–4 registra un intento en `localStorage` (`reporteQuizzes`), con fecha, módulo, puntaje y el detalle de cada pregunta: texto elegido, si fue correcta y la respuesta correcta.
+- Se conservan como máximo los 100 intentos más recientes.
+- El dashboard muestra: resumen general (intentos, aciertos, precisión global y mejor resultado), avance por módulo (mejor puntaje y promedio con barra visual) e historial desplegable por intento.
+- Incluye filtro por módulo y opción de borrar el historial con confirmación.
+- Es accesible desde la navegación del inicio y desde el encabezado de los módulos; hereda tema, accesibilidad y chatbot.
 
 ## 6. Recursos multimedia
 
