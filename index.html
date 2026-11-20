@@ -125,7 +125,7 @@
             </div>
             <h3>Guías paso a paso</h3>
             <p>Documentos descargables para crear la cuenta, iniciar trámites y más.</p>
-            <a class="enlace" href="#">Descargar guías →</a>
+            <a class="enlace" href="docs/guia-cidi-nivel2.pdf" download="Guia-CiDi-Nivel2.pdf">Descargar guía CiDi Nivel 2 (PDF) →</a>
           </article>
           <article class="tarjeta">
             <div class="tarjeta__icono">
@@ -133,7 +133,7 @@
             </div>
             <h3>Videotutoriales</h3>
             <p>Videos cortos que muestran cada pantalla y dónde hacer clic.</p>
-            <a class="enlace" href="#">Ver tutoriales →</a>
+            <a class="enlace" target="_blank" href="https://www.youtube.com/playlist?list=PLH7e_G46qhLtZcez-lP0spXUto8PGCz1V">Ver tutoriales →</a>
           </article>
           <article class="tarjeta">
             <div class="tarjeta__icono">
@@ -141,7 +141,7 @@
             </div>
             <h3>Preguntas frecuentes</h3>
             <p>Las dudas más comunes de los usuarios, explicadas en lenguaje simple.</p>
-            <a class="enlace" href="#">Ver preguntas →</a>
+            <a class="enlace" href="preguntas-frecuentes.html">Ver preguntas →</a>
           </article>
         </div>
       </div>
@@ -210,6 +210,22 @@
       Gobierno de la Provincia de Córdoba · Esqueleto MVP de capacitación para usuarios CiDi
     </div>
   </footer>
+
+  <div id="buscador-material" class="buscador-modal" hidden aria-hidden="true">
+    <div class="buscador-modal__overlay" data-buscador-cerrar></div>
+    <div class="buscador-modal__panel" role="dialog" aria-modal="true" aria-labelledby="buscador-titulo">
+      <div class="buscador-modal__encabezado">
+        <h2 id="buscador-titulo">Buscar material</h2>
+        <button type="button" class="buscador-modal__cerrar" id="cerrarBuscador" aria-label="Cerrar buscador">✕</button>
+      </div>
+      <form id="formBuscador" class="buscador-modal__form" role="search">
+        <label for="inputBuscador" class="sr-only">Buscar en el material de capacitación</label>
+        <input type="search" id="inputBuscador" name="q" placeholder="Buscar módulos, guías, preguntas frecuentes..." autocomplete="off">
+      </form>
+      <div id="buscadorEstado" class="buscador-modal__estado" aria-live="polite">Escribí para buscar en los materiales de la capacitación.</div>
+      <ul id="buscadorResultados" class="buscador-modal__resultados"></ul>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

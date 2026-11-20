@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es-ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preguntas frecuentes · Capacitación Ciudadano Digital</title>
+  <meta name="description" content="Preguntas frecuentes sobre CiDi y trámites relacionados, explicadas en lenguaje claro y simple.">
+  <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2336CA70'/%3E%3Ccircle cx='16' cy='12' r='5' fill='%23fff'/%3E%3Cpath d='M6 26c0-5 4.5-8 10-8s10 3 10 8' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="tema.js"></script>
+  <script src="accesibilidad.js"></script>
+  <script src="chatbot/chatbot.js"></script>
+  <style>
+    .faq-intro { color: var(--gris); margin-bottom: 20px; }
+    .faq-grupo { margin-bottom: 28px; }
+    .faq-grupo h2 { font-size: 1.25rem; margin-bottom: 12px; color: var(--tinta); }
+    .faq-lista { display: grid; gap: 10px; }
+    .faq-item { border: 1px solid var(--borde); border-radius: 10px; background: var(--blanco); overflow: hidden; }
+    .faq-item summary { cursor: pointer; padding: 14px 16px; font-weight: 600; list-style: none; position: relative; padding-right: 40px; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: var(--verde-oscuro); font-size: 1.2rem; font-weight: 700; }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-item[open] summary { border-bottom: 1px solid var(--borde); background: var(--verde-claro); }
+    .faq-respuesta { padding: 14px 16px; color: var(--gris-oscuro, #374050); }
+    .faq-respuesta p { margin: 0 0 10px; }
+    .faq-respuesta p:last-child { margin-bottom: 0; }
+    .faq-respuesta ul, .faq-respuesta ol { margin: 6px 0 10px 20px; }
+    .faq-respuesta li { margin: 4px 0; }
+    .faq-fuente { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--borde); color: var(--gris); font-size: .9rem; }
+    :root[data-tema="oscuro"] .faq-item { background: #1E2532; }
+    :root[data-tema="oscuro"] .faq-item[open] summary { background: #243041; }
+  </style>
+</head>
+<body>
+  <header class="modulo-header">
+    <div class="contenedor">
+      <a class="modulo-volver" href="index.html">← Volver al inicio</a>
+    </div>
+  </header>
+
+  <main class="pagina-modulo">
+    <section class="modulo-hero">
+      <div class="modulo-hero__contenido">
+        <span class="modulo-etiqueta">Capacitación CiDi · Material de apoyo</span>
+        <h1>Preguntas frecuentes</h1>
+        <p>Respuestas claras y simples a dudas comunes sobre Ciudadano Digital y trámites relacionados.</p>
+      </div>
+    </section>
+
+    <div class="modulo-contenido">
+      <section class="modulo-bloque">
+        <p class="faq-intro">
+          Esta guía reúne preguntas frecuentes en lenguaje sencillo. La información fue adaptada y resumida a partir de la
+          <a href="https://educaciontecnica.cba.gov.ar/preguntas-frecuentes/" target="_blank" rel="noopener noreferrer">sección de Preguntas Frecuentes de la Dirección General de Educación Técnica y Formación Profesional</a>
+          del Gobierno de Córdoba. Algunos datos, requisitos o canales pueden cambiar: ante dudas, consultá siempre los canales oficiales.
+        </p>
+
+        <div class="faq-grupo">
+          <h2>Ciudadano Digital (CiDi)</h2>
+          <div class="faq-lista">
+            <details class="faq-item" id="faq-cidi-cuenta">
+              <summary>¿Qué es el CiDi? ¿Cómo creo mi propia cuenta?</summary>
+              <div class="faq-respuesta">
+                <p>CiDi (Ciudadano Digital) es la plataforma del Gobierno de la Provincia de Córdoba que permite acceder, con una sola cuenta, a trámites, servicios y comunicaciones.</p>
+                <ul>
+                  <li>Para crear tu cuenta, ingresá a <a href="https://cidi.cba.gov.ar/portal/Cuenta/Register" target="_blank" rel="noopener noreferrer">cidi.cba.gov.ar</a> y completá el formulario con tus datos.</li>
+                  <li>Muchos trámites requieren <strong>Nivel 2</strong>, que se obtiene al validar tu identidad y la documentación solicitada.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="faq-grupo">
+          <h2>Legajo, antecedentes y orden de mérito (LOM)</h2>
+          <div class="faq-lista">
+            <details class="faq-item" id="faq-legajo">
+              <summary>¿Cómo realizar la apertura de legajo, agregado de antecedentes y registro de títulos?</summary>
+              <div class="faq-respuesta">
+                <p>El legajo docente registra tu historia profesional y laboral. La apertura se realiza por única vez; cada año se habilitan fechas para actualizar antecedentes y registrar nuevos títulos, que suman puntaje para la LOM (Lista de Orden de Mérito).</p>
+                <ul>
+                  <li>Ingresá a tu CiDi y buscá <strong>“Junta de Clasificación Secundaria”</strong>.</li>
+                  <li>Seguí las indicaciones para cada trámite según los instructivos vigentes.</li>
+                  <li><strong>Consultas:</strong> Junta de Clasificación Secundaria, tel. 0351-4332368/97, correo <a href="mailto:juntamediareclamos@cba.gov.ar">juntamediareclamos@cba.gov.ar</a>, Salta 74 (Córdoba), lunes a viernes de 9 a 17 h.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-lom">
+              <summary>¿Qué es la LOM y para qué sirve?</summary>
+              <div class="faq-respuesta">
+                <p>La LOM es la Lista de Orden de Mérito. Se elabora cada año a partir del puntaje obtenido por títulos y antecedentes actualizados. Ese orden se utiliza para acceder a titularidad, interinatos o suplencias en horas cátedra y cargos vacantes.</p>
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-lom-consulta">
+              <summary>¿Dónde se consulta la LOM?</summary>
+              <div class="faq-respuesta">
+                <p>Las LOM definitivas se publican en las fechas informadas oficialmente. Para consultarlas:</p>
+                <ul>
+                  <li>Ingresá por CiDi a <strong>Junta de Clasificación</strong> → <strong>Consulta Orden de Mérito Próximo Ciclo Lectivo</strong>.</li>
+                  <li>Si no estás de acuerdo con el puntaje, podés presentar un Recurso de Reconsideración en tu Centro Educativo base o en la sede de la Junta de Clasificación (Salta 74, Córdoba).</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-vacantes">
+              <summary>¿Dónde consultar horas cátedra o cargos vacantes y suplencias? ¿Cómo inscribirse?</summary>
+              <div class="faq-respuesta">
+                <p>Las horas cátedra y cargos vacantes (titulares, interinos y suplentes) se consultan por espacio curricular y por institución educativa.</p>
+                <ul>
+                  <li>En CiDi, ingresá a <strong>Junta de Clasificación Secundaria</strong> → <strong>Gestionar Vacantes</strong> y completá el formulario.</li>
+                  <li>La inscripción se realiza según el instructivo vigente emitido por la Junta de Clasificación.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-convocatoria">
+              <summary>¿Cómo saber los resultados de la convocatoria?</summary>
+              <div class="faq-respuesta">
+                <p>Una vez finalizado el período de inscripción, el Centro Educativo comunica a las personas interesadas la fecha y el horario establecidos (según el comprobante entregado). En esa instancia se informa el resultado de acuerdo al puntaje obtenido.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="faq-grupo">
+          <h2>Gestiones laborales y documentación</h2>
+          <div class="faq-lista">
+            <details class="faq-item" id="faq-mab">
+              <summary>¿Qué es un MAB y cuál es su importancia?</summary>
+              <div class="faq-respuesta">
+                <p>El MAB (Movimiento de Altas y Bajas) es un documento administrativo que indica el inicio o el cierre de la vinculación laboral docente. Es fundamental para que se pueda realizar la liquidación de haberes.</p>
+                <ul>
+                  <li>Para consultar su estado: CiDi → <strong>Empleado Digital</strong> → <strong>Consulta</strong> → <strong>Seguimiento de MAB</strong>.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-apto-psicofisico">
+              <summary>¿Qué es el Apto Psicofísico y cómo se gestiona?</summary>
+              <div class="faq-respuesta">
+                <p>Es el examen médico que deben realizar las personas que ingresan a la Administración Pública Provincial para acreditar condiciones de salud aptas para la tarea.</p>
+                <ul>
+                  <li>Revisá los requisitos e instructivos vigentes en el portal oficial del Gobierno de Córdoba (sección Apto Psicofísico) y en Empleado Digital / “Mis Comunicaciones” de CiDi.</li>
+                  <li>La información puede actualizarse, por lo que conviene verificarla periódicamente en los canales oficiales.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-constancia-servicios">
+              <summary>¿Para qué sirve y cómo se tramita la Constancia de Servicios?</summary>
+              <div class="faq-respuesta">
+                <p>La Constancia de Servicios es un documento oficial que acredita tu vínculo laboral. Se utiliza para distintos trámites administrativos y de seguridad social.</p>
+                <ul>
+                  <li>Se gestiona desde <strong>Empleado Digital</strong> dentro de CiDi, siguiendo las indicaciones del trámite.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-escala-salarial">
+              <summary>¿Cuál es la escala salarial vigente?</summary>
+              <div class="faq-respuesta">
+                <p>La escala salarial docente se publica y actualiza en el portal oficial del Gobierno de Córdoba. Para conocer la versión vigente, consultá <a href="https://www.cba.gov.ar/escala-salarial-docente/" target="_blank" rel="noopener noreferrer">Escala salarial docente</a>.</p>
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-licencias">
+              <summary>¿Cómo tramitar Licencias y Ausentismos?</summary>
+              <div class="faq-respuesta">
+                <p>Las licencias y ausentismos se gestionan de forma digital.</p>
+                <ul>
+                  <li>En CiDi ingresá a <strong>Empleado Digital</strong> → <strong>Autogestión</strong> → <strong>Solicitud de Licencia</strong> y completá el formulario.</li>
+                  <li>Algunas solicitudes se autorizan solo en forma digital y otras requieren presentar documentación respaldatoria.</li>
+                  <li>Revisá los tipos, requisitos y procedimientos vigentes en la información oficial del Gobierno de Córdoba.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-carpeta-medica">
+              <summary>¿Cómo gestionar una Carpeta Médica?</summary>
+              <div class="faq-respuesta">
+                <p>Puede solicitarse cuando, por enfermedad propia o de un familiar a cargo, no es posible asistir al trabajo. Existen carpetas de corto tratamiento (hasta 15 días) y de largo tratamiento (más de 15 días).</p>
+                <ul>
+                  <li>En CiDi ingresá a <strong>Empleado Digital</strong> → <strong>Solicitud de Carpeta Médica</strong> y seguí los pasos indicados.</li>
+                  <li>También podés solicitarla por teléfono al 0800 888 326 (lunes a viernes, de 8 a 20 h).</li>
+                  <li>Verificá siempre la información actualizada en los canales oficiales.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-justificacion-enfermedad">
+              <summary>¿Cuándo y cómo realizar una Justificación de Licencia por Enfermedad?</summary>
+              <div class="faq-respuesta">
+                <p>Se utiliza en situaciones puntuales, por ejemplo: cuando no hubo visita del Médico de Control Domiciliario (MCD), no te encontraron en el domicilio, hay disconformidad con la justificación o estabas fuera de la provincia al iniciar la carpeta médica.</p>
+                <ul>
+                  <li>En CiDi ingresá a <strong>Empleado Digital</strong> → <strong>Autogestión</strong> → <strong>Formulario de Justificación de Licencia por Enfermedad</strong>.</li>
+                  <li>Presentalo en la escuela con la documentación respaldatoria dentro de las 48 horas hábiles posteriores a tu regreso al trabajo.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-junta-medica">
+              <summary>¿Cómo solicitar una Junta Médica?</summary>
+              <div class="faq-respuesta">
+                <p>La Junta Médica es una instancia de revisión de la salud que puede solicitarse, entre otros motivos, para dar de alta o prorrogar una carpeta médica, solicitar o prorrogar adecuación de tareas, o por derivación/no visita del Médico de Control Domiciliario.</p>
+                <ul>
+                  <li>La solicitud se realiza mediante el formulario oficial vigente del Gobierno de Córdoba.</li>
+                  <li><strong>Consultas:</strong> 0351 524-3057/59 o <a href="mailto:turnosjuntas@cba.gov.ar">turnosjuntas@cba.gov.ar</a>.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-jubilacion">
+              <summary>¿Cómo iniciar el trámite de jubilación?</summary>
+              <div class="faq-respuesta">
+                <p>Para la jubilación docente se deben cumplir requisitos generales (edad, años de servicios con aportes y años frente a alumnos), que pueden variar según la situación.</p>
+                <ul>
+                  <li>En CiDi ingresá a <strong>Caja de Jubilaciones</strong> → <strong>Trámites</strong> → <strong>Solicitud de Jubilación</strong> y completá el formulario.</li>
+                  <li>Revisá tu <strong>Historia Laboral</strong> y verificá que estén registrados todos los años de servicios. Mantené tus datos de contacto actualizados.</li>
+                  <li><strong>Asesoramiento:</strong> Caja de Jubilaciones, (0351) 431 9262 (lunes a viernes, de 8 a 14 h).</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="faq-grupo">
+          <h2>Otros trámites y beneficios</h2>
+          <div class="faq-lista">
+            <details class="faq-item" id="faq-boleto-educativo">
+              <summary>¿Cómo tramitar el Boleto Educativo Gratuito (B.E.G.)?</summary>
+              <div class="faq-respuesta">
+                <p>El Boleto Educativo Gratuito permite a estudiantes, docentes y personal de escuelas trasladarse entre el hogar y el establecimiento educativo sin costo.</p>
+                <ul>
+                  <li>Consultá requisitos y procedimiento en <a href="https://boletoeducativogratuito.cba.gov.ar/" target="_blank" rel="noopener noreferrer">boletoeducativogratuito.cba.gov.ar</a>.</li>
+                  <li><strong>Más información:</strong> 0800-888-1234 (lunes a viernes, de 8 a 20 h).</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-vacunacion-covid">
+              <summary>¿Cómo solicitar turno para la vacunación contra Covid-19?</summary>
+              <div class="faq-respuesta">
+                <p>La vacunación se organiza por etapas según la disponibilidad de dosis y los grupos prioritarios definidos. La información y los formularios pueden actualizarse con el tiempo.</p>
+                <ul>
+                  <li>Consultá la información vigente en <a href="https://vacunacioncovid19.cba.gov.ar/Home" target="_blank" rel="noopener noreferrer">vacunacioncovid19.cba.gov.ar</a> o en los accesos correspondientes dentro de CiDi.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <p class="faq-fuente">
+          Fuente: <a href="https://educaciontecnica.cba.gov.ar/preguntas-frecuentes/" target="_blank" rel="noopener noreferrer">Preguntas Frecuentes – Dirección General de Educación Técnica y Formación Profesional (Gobierno de Córdoba)</a>. Contenido adaptado con fines informativos y educativos.
+        </p>
+      </section>
+
+      <nav class="modulo-navegacion">
+        <a class="btn btn-secundario" href="index.html">← Volver al inicio</a>
+      </nav>
+    </div>
+  </main>
+</body>
+</html>
